@@ -18,17 +18,71 @@ namespace WebApplicationAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApplicationAPI.Models.User", b =>
+            modelBuilder.Entity("WebApplicationAPI.Models.Address", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("City")
+                        .HasMaxLength(62);
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(62);
+
+                    b.Property<string>("Neighborhood")
+                        .HasMaxLength(62);
+
+                    b.Property<string>("Number")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("Street")
+                        .HasMaxLength(128);
+
+                    b.Property<long>("UseId");
+
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(32);
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("WebApplicationAPI.Models.AddressUser", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("AddressId");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AddressesUser");
+                });
+
+            modelBuilder.Entity("WebApplicationAPI.Models.User", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Passowrd")
+                        .HasMaxLength(128);
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(128);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
