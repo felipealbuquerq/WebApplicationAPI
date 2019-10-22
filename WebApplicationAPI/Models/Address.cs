@@ -4,9 +4,11 @@ namespace WebApplicationAPI.Models
 {
     public class Address
     {
+        #region MaxLength
         public const int MaxMediumLength = 128;
         public const int MaxSmallLength = 32;
         public const int MaxTextLength = 62;
+        #endregion
 
         public long Id { get; set; }
 
@@ -27,7 +29,5 @@ namespace WebApplicationAPI.Models
 
         [StringLength(MaxSmallLength)]
         public string ZipCode { get; set; }
-
-        public long UseId { get; set; }
     }
 }

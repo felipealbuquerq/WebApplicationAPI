@@ -6,7 +6,6 @@ namespace WebApplicationAPI.Models
     {
         public const int MaxMediumLength = 128;
 
-        [StringLength(MaxMediumLength)]
         public long Id { get; set; }
 
         [StringLength(MaxMediumLength)]
